@@ -1,0 +1,9 @@
+<h1><%= @townhouse_area.class.name %> <%= controller.action_name %></h1>
+
+<%= form_for @townhouse_area do |f| %>
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+  <%= f.label :area_type %>
+  <%= f.select :area_type, TownhouseArea.area_types %>
+  <%= f.submit 'Send' %>
+<% end %>

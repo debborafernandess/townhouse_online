@@ -1,0 +1,13 @@
+<h1 class="h2">Areas do Condomínio</h1>
+<%= link_to 'Add', new_townhouse_area_path %>
+
+<div class="table-responsive">
+  <table class="table table-hover table-bordered table-responsive table-sm">
+    <thead>
+      <th>Name</th>
+    </thead>
+    <tbody>
+      <%= render @townhouse_areas %>
+    </tbody>
+  </table>
+</div>
