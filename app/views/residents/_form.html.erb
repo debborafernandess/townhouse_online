@@ -1,0 +1,30 @@
+<h1><%= @resident.class.name %> <%= controller.action_name %></h1>
+
+<% unless @resident.errors.blank? %>
+  <%= @resident.errors.full_messages %>
+<% end %>
+
+<%= form_for @resident do |f| %>
+  <div class="form-group">
+    <%= f.label :name %>
+    <%= f.text_field :name, class: 'form-control' %>
+  </div>
+  <div class="form-group">
+    <%= f.label :document %>
+    <%= f.text_field :document, class: 'form-control' %>
+  </div>
+   <div class="form-group">
+    <%= f.label :email %>
+    <%= f.text_field :email, class: 'form-control' %>
+  </div>
+  <div class="form-group">
+  <%= f.label :townhouse_area %>
+  <%= f.collection_select(:townhouse_area_id,
+                          TownhouseArea.where(area_type: :tower),
+                          :id, :name, {}, class: 'form-control') %>
+  </div>
+
+  <div class="form-group">
+    <%= f.submit 'Send', class: 'btn btn-default' %>
+  </div>
+<% end %>

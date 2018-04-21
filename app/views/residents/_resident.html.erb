@@ -1,0 +1,12 @@
+<tr>
+  <td><%= resident.name %></td>
+  <td><%= resident.townhouse_area.name %></td>
+  <td>
+    <%= link_to 'Edit', edit_resident_path(resident) %>
+    <%= link_to 'Destroy',
+      resident_path(resident),
+      method: :delete,
+      data: { confirm: 'Are you sure?' }
+    %>
+  </td>
+</tr>

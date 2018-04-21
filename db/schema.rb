@@ -10,10 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_04_21_044423) do
+ActiveRecord::Schema.define(version: 2018_04_21_045831) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "residents", force: :cascade do |t|
+    t.string "name", null: false
+    t.bigint "townhouse_area_id"
+    t.string "document", null: false
+    t.string "email", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["townhouse_area_id"], name: "index_residents_on_townhouse_area_id"
+  end
 
   create_table "townhouse_areas", force: :cascade do |t|
     t.string "name"
@@ -22,4 +32,5 @@ ActiveRecord::Schema.define(version: 2018_04_21_044423) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "residents", "townhouse_areas"
 end
