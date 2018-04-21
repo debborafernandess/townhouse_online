@@ -1,24 +1,18 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
 
-Things you may want to cover:
+Cadastro de moradores
+rails g Person name:string cpf:name birthdate:date resident_since:date
 
-* Ruby version
+Cadastro de area
+name:string area_type:string
 
-* System dependencies
+Cadastro de predio/torre
+Reserva de churrasqueira
+Reserva de Salão de Festa
+ .
+ .
+ .
+Comunicados em geral
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Base do layout: https://getbootstrap.com/docs/4.0/examples/dashboard/

@@ -1,7 +1,7 @@
 class TownhouseAreasController < ApplicationController
   before_action :set_townhouse_area, only: %i(edit update destroy)
   def index
-    @townhouse_areas = TownhouseArea.order(:name)
+    @townhouse_areas = TownhouseArea.order(:name).page(params[:page])
   end
 
   def new

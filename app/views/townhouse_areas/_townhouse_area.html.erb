@@ -1,3 +1,12 @@
 <tr>
   <td><%= townhouse_area.name %></td>
+  <td><%= townhouse_area.area_type %></td>
+  <td>
+    <%= link_to 'Edit', edit_townhouse_area_path(townhouse_area) %>
+    <%= link_to 'Destroy',
+      townhouse_area_path(townhouse_area),
+      method: :delete,
+      data: { confirm: 'Are you sure?' }
+    %>
+  </td>
 </tr>
