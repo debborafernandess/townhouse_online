@@ -18,12 +18,19 @@ class TownhouseAreasController < ApplicationController
   end
 
   def update
+    if @townhouse_area.update(permited_params)
+      redirect_to townhouse_areas_path
+    else
+      render :edit
+    end
   end
 
-  def edit
-  end
+  def edit; end
 
   def destroy
+    @townhouse_area.destroy
+
+    redirect_to townhouse_areas_path
   end
 
   private

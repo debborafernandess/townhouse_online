@@ -10,14 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_04_16_015152) do
+ActiveRecord::Schema.define(version: 2018_04_21_044423) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "townhouse_areas", force: :cascade do |t|
     t.string "name"
-    t.integer "area_type"
+    t.string "area_type"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
