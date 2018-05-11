@@ -21,6 +21,14 @@
         </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
+        <li>
+        <% unless current_user %>
+          <%= link_to "Sign in Facebook", user_facebook_omniauth_authorize_path %>
+        <% else %>
+          <%= current_user[:name] %>
+          <%= link_to "Logout", destroy_user_session_path, method: :delete %>
+        <% end %>
+        </li>
         <%# if admin_signed_in? %>
           <li><%#= link_to 'Sign out', destroy_admin_session_path, method: :delete %></li>
         <%#  else %>

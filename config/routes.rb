@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
-  devise_for :users
+  get 'pages/privacy_policy'
+  devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks"  }
   # root to: "sessions#new", constraints: -> (request) { request.session[:user_id].blank?  }
   root to: 'townhouse_areas#index'
 
