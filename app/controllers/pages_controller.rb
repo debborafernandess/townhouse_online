@@ -1,4 +1,5 @@
 class PagesController < ApplicationController
-  def privacy_policy
+  def show
+    render template: "pages/#{params[:page]}"
   end
 end
