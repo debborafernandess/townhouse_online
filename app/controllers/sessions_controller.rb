@@ -5,7 +5,7 @@ class SessionsController < ApplicationController
     if current_user.admin?
       redirect_to townhouse_areas_path
     else
-      redirect_to residents_path
+      redirect_to bookings_path
     end
   end
 end

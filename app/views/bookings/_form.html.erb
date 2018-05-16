@@ -1,0 +1,22 @@
+<h1><%= @booking.class.name %> <%= controller.action_name %></h1>
+
+<%= render partial: 'shared/errors', locals: { resource: @booking } if @booking.errors %>
+
+<%= form_for @booking do |f| %>
+  <div class="form-group">
+    <%= f.label :reserved_to %>
+    <%= f.text_field :reserved_to, class: 'form-control' %>
+  </div>
+  <div class="form-group">
+    <%= f.label :user %>
+    <%= f.collection_select(:user_id, User.all, :id, :name, { include_blank: true }, class: 'form-control') %>
+  </div>
+  <div class="form-group">
+    <%= f.label :townhouse_area %>
+    <%= f.collection_select(:townhouse_area_id, TownhouseArea.shared, :id, :name, { include_blank: true }, class: 'form-control') %>
+  </div>
+
+  <div class="form-group">
+    <%= f.submit 'Send', class: 'btn btn-default' %>
+  </div>
+<% end %>

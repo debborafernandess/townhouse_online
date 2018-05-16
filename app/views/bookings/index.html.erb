@@ -1,0 +1,20 @@
+<h1 class="h2">Reservas</h1>
+
+<div class="form-group">
+  <%= link_to 'Add', new_booking_path %>
+</div>
+
+<div class="table">
+  <table class="table table-hover table-responsive table-sm">
+    <thead>
+      <th>User</th>
+      <th>Area</th>
+      <th>Reservado para</th>
+      <th></th>
+    </thead>
+    <tbody>
+      <%= render @bookings %>
+    </tbody>
+  </table>
+</div>
+<%= paginate @bookings %>

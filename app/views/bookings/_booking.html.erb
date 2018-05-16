@@ -1,0 +1,13 @@
+<tr>
+  <td><%= booking.user.name %></td>
+  <td><%= booking.townhouse_area.name %></td>
+  <td><%= booking.reserved_to.strftime('%d/%m/%Y') %></td>
+  <td>
+    <%= link_to 'Edit', edit_booking_path(booking) %>
+    <%= link_to 'Destroy',
+      booking_path(booking),
+      method: :delete,
+      data: { confirm: 'Are you sure?' } if current_user.admin?
+    %>
+  </td>
+</tr>
