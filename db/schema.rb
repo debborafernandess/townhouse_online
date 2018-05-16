@@ -10,10 +10,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_05_13_010144) do
+ActiveRecord::Schema.define(version: 2018_05_16_022741) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "bookings", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "townhouse_area_id", null: false
+    t.date "reserved_to"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["townhouse_area_id", "reserved_to"], name: "index_bookings_on_townhouse_area_id_and_reserved_to", unique: true
+    t.index ["townhouse_area_id"], name: "index_bookings_on_townhouse_area_id"
+    t.index ["user_id"], name: "index_bookings_on_user_id"
+  end
 
   create_table "residents", force: :cascade do |t|
     t.string "name", null: false
@@ -22,7 +33,6 @@ ActiveRecord::Schema.define(version: 2018_05_13_010144) do
     t.string "email", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["document"], name: "index_residents_on_document"
     t.index ["townhouse_area_id"], name: "index_residents_on_townhouse_area_id"
   end
 
@@ -31,6 +41,7 @@ ActiveRecord::Schema.define(version: 2018_05_13_010144) do
     t.string "area_type"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "property_type", default: "shared"
   end
 
   create_table "users", force: :cascade do |t|
@@ -55,5 +66,7 @@ ActiveRecord::Schema.define(version: 2018_05_13_010144) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "bookings", "townhouse_areas"
+  add_foreign_key "bookings", "users"
   add_foreign_key "residents", "townhouse_areas"
 end
