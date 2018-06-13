@@ -1,6 +1,6 @@
 <tr>
   <td><%= townhouse_area.name %></td>
-  <td><%= townhouse_area.area_type.humanize %></td>
+  <td><%= townhouse_area.area_type.try(:humanize ) %></td>
   <td>
     <%= link_to 'Edit', edit_townhouse_area_path(townhouse_area) %>
     <%= link_to 'Destroy',

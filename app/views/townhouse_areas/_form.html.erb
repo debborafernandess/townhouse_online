@@ -8,7 +8,7 @@
   <div class="form-group">
   <%= f.label :area_type %>
   <%= f.select(:area_type,
-               TownhouseArea.area_type.collect { |key, value| [key.humanize, key] },
+               TownhouseArea.area_types.collect { |key, value| [key.humanize, key] },
                {}, class: 'form-control') %>
   </div>
 
