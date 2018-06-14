@@ -33,6 +33,7 @@ ActiveRecord::Schema.define(version: 2018_05_16_022741) do
     t.string "email", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["document"], name: "index_residents_on_document"
     t.index ["townhouse_area_id"], name: "index_residents_on_townhouse_area_id"
   end
 

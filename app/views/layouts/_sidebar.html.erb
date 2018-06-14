@@ -1,0 +1,63 @@
+<aside class="ls-notification">
+  <nav class="ls-notification-list" id="ls-notification-curtain2">
+    <h3 class="ls-title-2">Notificações</h3>
+    <!-- <ul> -->
+    <!--   <li class="ls&#45;dismissable"> -->
+    <!--     <a href="#">Sequi consectetur optio quo et sit consequuntur assumenda</a> -->
+    <!--     <a href="#" data&#45;ls&#45;module="dismiss" class="ls&#45;ico&#45;close ls&#45;close&#45;notification"></a> -->
+    <!--   </li> -->
+    <!-- </ul> -->
+    <p class="ls-no-notification-message">Não há notificações.</p>
+  </nav>
+  <nav class="ls-notification-list" id="ls-help-curtain2">
+    <h3 class="ls-title-2">Feedback</h3>
+    <ul>
+      <li><a href="#">> ducimus quo harum provident eum laborum</a></li>
+      <li><a href="#">> porro aliquid omnis et sequi sint</a></li>
+    </ul>
+  </nav>
+  <nav class="ls-notification-list" id="ls-feedback-curtain2">
+    <h3 class="ls-title-2">Ajuda</h3>
+    <ul>
+      <li><a href="#">> Guia</a></li>
+      <li><a href="#">> Wiki</a></li>
+    </ul>
+  </nav>
+</aside>
+
+<aside class="ls-sidebar">
+  <div data-ls-module="dropdown" class="ls-dropdown ls-user-account">
+    <% if current_user %>
+      <%= link_to '#', class: 'ls-ico-user' do %>
+        <!-- <img src="/locawebstyle/assets/images/locastyle/avatar&#45;example.jpg" alt="" /> -->
+        <span class="ls-name"><%= current_user[:name] %></span>
+      <% end %>
+      <nav class="ls-dropdown-nav ls-user-menu" aria-hidden="true">
+        <ul>
+          <li><a href="#">Meus dados</a></li>
+          <li><%= link_to 'Sair',
+            destroy_user_session_path,
+            class: "ls-btn-logout",
+            role: 'combobox',
+            'aria-expanded': false,
+            method: :delete %>
+          </li>
+        </ul>
+      </nav>
+    <% end %>
+  </div>
+  <div class="ls-sidebar-inner">
+    <a href="#" class="ls-go-prev"><span class="ls-text">Voltar</span></a>
+    <nav class="ls-menu">
+      <ul>
+        <% if current_user.admin? %>
+          <li class="ls-active"><a href="#" class="ls-ico-dashboard">Dashboard</a></li>
+          <li><%= link_to 'Condominio', townhouse_areas_path, class: 'ls-ico-home' %></li>
+          <li><%= link_to 'Moradores', residents_path, class: 'ls-ico-users' %></li>
+        <% end %>
+        <li><%= link_to 'Agenda', bookings_path, class: 'ls-ico-calendar' %></li>
+        <li><%= link_to 'Histórico', '#', class: 'ls-ico-history' %></li>
+      </ul>
+    </nav>
+  </div>
+</aside>

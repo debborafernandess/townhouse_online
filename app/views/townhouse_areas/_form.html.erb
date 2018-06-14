@@ -1,18 +1,23 @@
-<h1><%= @townhouse_area.class.name %> <%= controller.action_name %></h1>
+<h1 class="ls-title-intro ls-ico-home">
+  <%= t(controller.action_name).capitalize %>
+</h1>
 
 <%= form_for @townhouse_area do |f| %>
   <div class="form-group">
     <%= f.label :name %>
     <%= f.text_field :name, class: 'form-control' %>
+    <%= @townhouse_area.errors.messages.fetch(:name, nil) * ', ' %>
   </div>
   <div class="form-group">
-  <%= f.label :area_type %>
-  <%= f.select(:area_type,
-               TownhouseArea.area_types.collect { |key, value| [key.humanize, key] },
-               {}, class: 'form-control') %>
+    <%= f.label :area_type %>
+    <%= f.select(:area_type,
+                 TownhouseArea.area_types.collect { |key, value| [key.humanize, key] },
+                 {}, class: 'form-control') %>
+    <%= @townhouse_area.errors.messages.fetch(:area_type, nil) * ', ' %>
   </div>
 
   <div class="form-group">
-    <%= f.submit 'Send', class: 'btn btn-default' %>
+    <%= link_to t('cancel'), :back, class: 'btn btn-default' %>
+    <%= f.submit t('submit'), class: 'btn btn-primary' %>
   </div>
 <% end %>

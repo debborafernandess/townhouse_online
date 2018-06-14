@@ -1,13 +1,13 @@
-<h1 class="h2">Areas do Condomínio</h1>
-<div class="form-group">
-  <%= link_to 'Add', new_resident_path %>
-</div>
+<h1 class="ls-title-intro ls-ico-users"><%= @residents.model_name.human.capitalize %>
+  <%= link_to t('add'), new_resident_path, class: 'ls-btn-primary' %>
+</h1>
 
 <div class="table">
   <table class="table table-hover table-responsive table-sm">
     <thead>
-      <th>Name</th>
-      <th>TownhouseArea</th>
+      <th class="ls-ico-user"></th>
+      <th><%= Resident.human_attribute_name(:name).capitalize %></th>
+      <th><%= Resident.human_attribute_name(:email).capitalize %></th>
       <th></th>
     </thead>
     <tbody>
@@ -15,4 +15,5 @@
     </tbody>
   </table>
 </div>
+
 <%= paginate @residents %>

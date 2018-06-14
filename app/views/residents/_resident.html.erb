@@ -1,10 +1,11 @@
 <tr>
-  <td><%= resident.name %></td>
-  <td><%= resident.townhouse_area.name %></td>
+  <td><%= link_to '', edit_resident_path(resident), class: 'ls-ico-pencil' %></td>
+  <td><%= link_to resident.name, edit_resident_path(resident) %></td>
+  <td><%= resident.email %></td>
   <td>
-    <%= link_to 'Edit', edit_resident_path(resident) %>
-    <%= link_to 'Destroy',
+    <%= link_to 'remover',
       resident_path(resident),
+      class: 'ls-ico-cancel-circle',
       method: :delete,
       data: { confirm: 'Are you sure?' }
     %>

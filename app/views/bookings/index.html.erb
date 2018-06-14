@@ -1,15 +1,14 @@
-<h1 class="h2">Reservas</h1>
-
-<div class="form-group">
-  <%= link_to 'Add', new_booking_path %>
-</div>
+<h1 class="ls-title-intro ls-ico-calendar"><%= @bookings.model_name.human.pluralize.capitalize %>
+  <%= link_to 'nova reserva', new_booking_path, class: 'ls-btn-primary' %>
+</h1>
 
 <div class="table">
   <table class="table table-hover table-responsive table-sm">
     <thead>
-      <th>User</th>
-      <th>Area</th>
-      <th>Reservado para</th>
+      <th class="ls-ico-calendar"></th>
+      <th>Reserva para o dia</th>
+      <th>Morador</th>
+      <th>Local</th>
       <th></th>
     </thead>
     <tbody>
@@ -17,4 +16,5 @@
     </tbody>
   </table>
 </div>
+
 <%= paginate @bookings %>

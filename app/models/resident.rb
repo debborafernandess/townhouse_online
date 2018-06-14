@@ -1,5 +1,5 @@
 class Resident < ApplicationRecord
-  belongs_to :townhouse_area, -> { where('area_type = ?', 'tower') }
+  # belongs_to :townhouse_area, -> { where('area_type = ?', 'tower') }
 
-  validates :name, :email, presence: true
+  validates :name, :email, :document, presence: true
 end

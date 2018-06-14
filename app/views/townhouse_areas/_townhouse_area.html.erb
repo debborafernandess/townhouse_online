@@ -1,10 +1,10 @@
 <tr>
-  <td><%= townhouse_area.name %></td>
-  <td><%= townhouse_area.area_type.try(:humanize ) %></td>
+  <td><%= link_to '', edit_townhouse_area_path(townhouse_area), class: 'ls-ico-pencil' %></td>
+  <td><%= link_to townhouse_area.name, edit_townhouse_area_path(townhouse_area) %></td>
   <td>
-    <%= link_to 'Edit', edit_townhouse_area_path(townhouse_area) %>
-    <%= link_to 'Destroy',
+    <%= link_to 'remover',
       townhouse_area_path(townhouse_area),
+      class: 'ls-ico-cancel-circle',
       method: :delete,
       data: { confirm: 'Are you sure?' }
     %>
