@@ -5,6 +5,10 @@ class BookingsController < ApplicationController
     @bookings = Booking.not_expired.order(reserved_to: :asc).page(params[:page])
   end
 
+  def expired
+    @bookings = Booking.expired.order(reserved_to: :desc).page(params[:page])
+  end
+
   def new
     @booking = Booking.new
   end

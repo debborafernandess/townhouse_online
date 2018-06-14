@@ -26,14 +26,7 @@
 
   <span class="ls-show-sidebar ls-ico-menu"></span>
 
-  <%= link_to '#', class: 'ls-go-next' do %>
-    <span class="ls-text">Voltar</span>
-  <% end %>
-
   <h1 class="ls-brand-name">
-    <%= link_to root_path, class: 'ls-ico-home' do %>
-      <small></small>
-      Condominio do Vitão
-    <% end %>
+    <%= link_to "#{ENV['TOWNHOUSE_NAME'] || 'Meu condomínio'}", root_path, class: 'ls-ico-home' %>
   </h1>
 </div>

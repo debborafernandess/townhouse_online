@@ -3,7 +3,9 @@ Rails.application.routes.draw do
 
   devise_for :users, controllers: { omniauth_callbacks: "users/omniauth_callbacks" }
 
-  resources :bookings
+  resources :bookings do
+    get :expired, on: :collection
+  end
   resources :residents
   resources :townhouse_areas
 

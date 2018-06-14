@@ -1,0 +1,20 @@
+<h1 class="ls-title-intro ls-ico-calendar"><%= @bookings.model_name.human.pluralize.capitalize %>
+  <%= link_to 'nova reserva', new_booking_path, class: 'ls-btn-primary' %>
+</h1>
+
+<div class="table">
+  <table class="table table-hover table-responsive table-sm">
+    <thead>
+      <th class="ls-ico-calendar"></th>
+      <th>Reserva para o dia</th>
+      <th>Morador</th>
+      <th>Local</th>
+      <th></th>
+    </thead>
+    <tbody>
+      <%= render @bookings %>
+    </tbody>
+  </table>
+</div>
+
+<%= paginate @bookings %>

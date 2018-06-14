@@ -1,9 +1,13 @@
 <tr>
-  <td><%= link_to '', edit_booking_path(booking), class: 'ls-ico-pencil' %></td>
+  <% if booking.active? %>
+    <td><%= link_to '', edit_booking_path(booking), class: 'ls-ico-pencil' %></td>
+  <% else %>
+    <td class="ls-ico-calendar"></td>
+  <% end %>
   <td><%= booking.reserved_to.strftime('%d/%m/%Y') %></td>
   <td><%= booking.user.name %></td>
   <td><%= booking.townhouse_area.name %></td>
-  <% if current_user.admin? %>
+  <% if current_user.admin? && booking.active? %>
     <td>
       <%= link_to 'remover',
         booking_path(booking),

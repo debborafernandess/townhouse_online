@@ -7,5 +7,10 @@ class Booking < ApplicationRecord
     presence: true,
     uniqueness: { scope: [:townhouse_area, :reserved_to] }
 
+  scope :expired,     -> { where('reserved_to < ?', Date.current) }
   scope :not_expired, -> { where('reserved_to >= ?', Date.current) }
+
+  def active?
+    reserved_to >= Date.current
+  end
 end

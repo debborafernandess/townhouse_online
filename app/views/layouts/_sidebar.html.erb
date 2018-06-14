@@ -50,13 +50,12 @@
     <a href="#" class="ls-go-prev"><span class="ls-text">Voltar</span></a>
     <nav class="ls-menu">
       <ul>
+        <li class="ls-active"><%= link_to 'Agenda', bookings_path, class: 'ls-ico-calendar' %></li>
         <% if current_user.admin? %>
-          <li class="ls-active"><a href="#" class="ls-ico-dashboard">Dashboard</a></li>
           <li><%= link_to 'Condominio', townhouse_areas_path, class: 'ls-ico-home' %></li>
           <li><%= link_to 'Moradores', residents_path, class: 'ls-ico-users' %></li>
         <% end %>
-        <li><%= link_to 'Agenda', bookings_path, class: 'ls-ico-calendar' %></li>
-        <li><%= link_to 'Histórico', '#', class: 'ls-ico-history' %></li>
+        <li><%= link_to 'Histórico', expired_bookings_path, class: 'ls-ico-history' %></li>
       </ul>
     </nav>
   </div>
