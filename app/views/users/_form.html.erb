@@ -13,6 +13,16 @@
     <%= f.text_field :document, class: 'form-control' %>
     <%= @user.errors.messages.fetch(:document, nil) * ', ' %>
   </div>
+  <div class="form-group">
+    <%= f.label :number %>
+    <%= f.text_field :number, class: 'form-control' %>
+    <%= @user.errors.messages.fetch(:number, nil) * ', ' %>
+  </div>
+  <div class="form-group">
+    <%= f.label :telephone %>
+    <%= f.text_field :telephone, class: 'form-control' %>
+    <%= @user.errors.messages.fetch(:telephone, nil) * ', ' %>
+  </div>
    <div class="form-group">
     <%= f.label :email %>
     <%= f.text_field :email, class: 'form-control' %>

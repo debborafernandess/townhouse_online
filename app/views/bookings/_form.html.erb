@@ -2,7 +2,8 @@
   <%= t(controller.action_name).capitalize %>
 </h1>
 
-<%= form_for @booking, html: { class: 'ls-form ls-form-inline row' } do |f| %>
+<%= form_for @booking, html: { class: 'ls-form ls-form-inline ' } do |f| %>
+  <div class="row">
     <label class="ls-label col-md-4">
       <div class="ls-prefix-group">
         <span class="ls-label-text-prefix">Data: </span>
@@ -11,6 +12,31 @@
       </div>
       <p class="ls-label-info"><%= @booking.errors.messages.fetch(:reserved_to, nil) * ', ' %></p>
     </label>
+    <label class="ls-label col-md-1">
+      <div class="ls-prefix-group">
+        <span class="ls-label-text-prefix">Inicio: </span>
+        <%= f.time_field :start, value: '08:00' %>
+      </div>
+      <p class="ls-label-info"><%= @booking.errors.messages.fetch(:start, nil) * ', ' %></p>
+    </label>
+    <label class="ls-label col-md-1">
+      <div class="ls-prefix-group">
+        <span class="ls-label-text-prefix">Fim: </span>
+        <%= f.time_field :end, value: '22:00' %>
+      </div>
+      <p class="ls-label-info"><%= @booking.errors.messages.fetch(:end, nil) * ', ' %></p>
+    </label>
+  </div>
+  <div class="row">
+    <label class="ls-label col-md-4">
+      <div class="ls-prefix-group">
+        <span class="ls-label-text-prefix">Nº de convidados: </span>
+        <%= f.text_field :guests %>
+      </div>
+      <p class="ls-label-info"><%= @booking.errors.messages.fetch(:guests, nil) * ', ' %></p>
+    </label>
+  </div>
+  <div class="row">
     <label class="ls-label col-md-4">
       <div class="ls-prefix-group">
         <span class="ls-label-text-prefix">Morador: </span>
@@ -21,7 +47,7 @@
           <%= text_field_tag :user, current_user.name %>
         <% end %>
       </div>
-      <p class="ls-label-info"><%= @booking.errors.messages.fetch(:user, nil).first %></p>
+      <p class="ls-label-info"><%= @booking.errors.messages.fetch(:user, nil) %></p>
     </label>
     <label class="ls-label col-md-4">
       <div class="ls-prefix-group">
@@ -33,11 +59,14 @@
           <%= f.collection_select(:townhouse_area_id, @areas, :id, :name, { include_blank: true }, class: 'form-control') %>
         <% end %>
       </div>
-      <p class="ls-label-info"><%= @booking.errors.messages.fetch(:townhouse_area, nil).first %></p>
+      <p class="ls-label-info"><%= @booking.errors.messages.fetch(:townhouse_area, nil) %></p>
     </label>
+  </div>
 
-  <div class='ls-actions-btn'>
-    <%= link_to t('cancel'), bookings_path, class: 'btn btn-default' %>
-    <%= f.submit t('submit'), class: 'btn btn-primary' %>
+  <div class='row'>
+    <div class='ls-actions-btn'>
+      <%= link_to t('cancel'), bookings_path, class: 'btn btn-default' %>
+      <%= f.submit t('submit'), class: 'btn btn-primary' %>
+    </div>
   </div>
 <% end %>

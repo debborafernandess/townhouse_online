@@ -10,6 +10,17 @@ class BookingsController < ApplicationController
     @bookings = Booking.expired.order(reserved_to: :desc).page(params[:page])
   end
 
+  def show
+    @booking = Booking.find(params[:id])
+
+    respond_to do |format|
+      format.html
+      format.pdf do
+        render pdf: 'booking',  encoding: 'utf8'
+      end
+    end
+  end
+
   def new
     @booking = Booking.new
   end
@@ -42,7 +53,8 @@ class BookingsController < ApplicationController
   private
 
   def permited_params
-    params.require(:booking).permit(:user_id, :townhouse_area_id, :reserved_to)
+    params.require(:booking)
+      .permit(:user_id, :townhouse_area_id, :reserved_to, :start, :end, :guests)
   end
 
   def set_booking

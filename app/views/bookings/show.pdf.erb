@@ -1,0 +1,43 @@
+<%= wicked_pdf_stylesheet_link_tag "pdf" %>
+<title>Reserva <%= l(@booking.reserved_to) %></title>
+
+<div class="document">
+  <center>
+    <h1>TERMO DE REQUISIÇÃO / RESPONSABILIDADE</h1>
+    <h1>SALÃO DE FESTAS, CHURRASQUEIRA E FORNO</h1>
+  </center>
+
+  <br />
+  <p>REQUISITANTE: <u>_<%= @booking.user.name.ljust(50,  '_') %></u> APTO.: <u><%= @booking.user.number %></u></p>
+  <p>EMAIL: _<u><%= @booking.user.email.ljust(30,  '_') %></u>__________________________________  TEL: <u><%= @booking.user.telephone %></u></p>
+  <p>DATA A SER RESERVADA: <u> <%= l(@booking.reserved_to) %> </u>, das <u><%= l(@booking.start, format: :hour) %></u> às <u><%= l(@booking.end, format: :hour) %></u> horas.</p>
+
+  <br />
+  <p>Na qualidade de morador(a) do Condomínio Edifício Arbos Butantã, venho solicitar autorização para
+  utilizar o Salão de Festas, Churrasqueira e Forno do edifício, para a data e horário acima indicados,
+  pelo que me comprometo e me responsabilizo:</p>
+  <p>1) Número de Convidados da Festa: <u><%= @booking.guests %></u></p>
+  <p>2) Valor do Aluguel: R$ 150,00</p>
+  <p>3) Declaro ter pleno conhecimento do <strong>Regulamento Interno</strong> do edifício no que se refere ao uso das
+  áreas comuns, ficando sujeito a <strong>multa em caso de infração</strong>;</p>
+  <p>4) Reconheço ter ciência que o uso das demais áreas comuns é <strong>exclusivo aos moradores</strong> do condomínio,
+  não podendo ser utilizado pelos convidados;</p>
+  <p>5) Reconheço ter ciência que é <strong>proibido circular com animais</strong> nas áreas comuns do edifício, incluindo
+  os jardins, sob risco de multa;</p></p>
+  <p>6) Declaro sob minha inteira responsabilidade a <strong>manutenção da ordem</strong>, de tal forma a não perturbar
+  os demais moradores e vizinhos;</p>
+  <p>7) Comprometo-me por todo e qualquer dano sofrido pelo mobiliário, adornos, aparelhos, vidros e demais
+  objetos que guarnecem o edifício, durante o período de sua utilização, como também que <strong>responderei em
+  pagamento imediato por quaisquer prejuízos ou danos</strong> que forem causados aos moradores e ao edifício;</p>
+  <p>8) Responsabilizo-me ainda, a controlar o volume dos instrumentos sonoros durante a festa, sendo
+  de meu conhecimento a <strong>proibição total de barulhos após as 22 horas</strong>, sob risco de multa;</p>
+  <p>9) Comprometo-me a deixar na Portaria, antes do início da festa, uma <strong> LISTA</strong> com o nome de <strong>todos os
+  convidados</strong> e declaro ciência que qualquer convidado somente poderá entrar no edifício caso seja autorizado por mim.</p>
+
+  <h4>São Paulo, _______ de ____________ de ________</h4>
+
+
+  ____________________________         ____________________________
+  <br/ >
+  assinatura do morador requisitante          autorização do Síndico/Zelador
+</div>

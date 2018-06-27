@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_06_22_004710) do
+ActiveRecord::Schema.define(version: 2018_06_27_023438) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,6 +21,9 @@ ActiveRecord::Schema.define(version: 2018_06_22_004710) do
     t.date "reserved_to"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.time "start"
+    t.time "end"
+    t.integer "guests", default: 1
     t.index ["townhouse_area_id", "reserved_to"], name: "index_bookings_on_townhouse_area_id_and_reserved_to", unique: true
     t.index ["townhouse_area_id"], name: "index_bookings_on_townhouse_area_id"
     t.index ["user_id"], name: "index_bookings_on_user_id"
@@ -65,6 +68,8 @@ ActiveRecord::Schema.define(version: 2018_06_22_004710) do
     t.string "document"
     t.bigint "townhouse_area_id"
     t.boolean "active", default: false
+    t.integer "number"
+    t.string "telephone"
     t.index ["document"], name: "index_users_on_document", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true

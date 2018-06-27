@@ -17,6 +17,8 @@ gem 'jbuilder', '~> 2.5'
 gem 'bootstrap-sass'
 gem 'jquery-rails', '~>4.3.3'
 gem 'kaminari', '~>1.1.1'
+gem 'wkhtmltopdf-binary', '~>0.12.4'
+gem 'wicked_pdf', '~>1.1.0'
 
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'

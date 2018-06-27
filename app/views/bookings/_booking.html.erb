@@ -7,15 +7,19 @@
   <td><%= booking.reserved_to.strftime('%d/%m/%Y') %></td>
   <td><%= booking.user.name %></td>
   <td><%= booking.townhouse_area.name %></td>
-    <td class="ls-ico-book"></td>
-  <% if current_user.admin? && booking.active? %>
-    <td>
+  <td>
+    <% if booking.user == current_user || current_user.admin? %>
+      <%= link_to '', booking_path(booking, format: :pdf), class: 'ls-ico-book', target: '_blank' %>
+    <% end %>
+  </td>
+  <td>
+    <% if current_user.admin? && booking.active? %>
       <%= link_to '',
         booking_path(booking),
         class: 'ls-ico-cancel-circle',
         method: :delete,
         data: { confirm: 'Are you sure?' } if current_user.admin?
       %>
-    </td>
   <% end %>
+  </td>
 </tr>
