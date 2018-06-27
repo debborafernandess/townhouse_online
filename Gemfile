@@ -15,8 +15,8 @@ gem 'coffee-rails', '~> 4.2'
 gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.5'
 gem 'bootstrap-sass'
-gem 'jquery-rails'
-gem 'kaminari'
+gem 'jquery-rails', '~>4.3.3'
+gem 'kaminari', '~>1.1.1'
 
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_05_16_022741) do
+ActiveRecord::Schema.define(version: 2018_06_22_004710) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -33,7 +33,6 @@ ActiveRecord::Schema.define(version: 2018_05_16_022741) do
     t.string "email", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["document"], name: "index_residents_on_document"
     t.index ["townhouse_area_id"], name: "index_residents_on_townhouse_area_id"
   end
 
@@ -63,11 +62,17 @@ ActiveRecord::Schema.define(version: 2018_05_16_022741) do
     t.string "uid"
     t.text "image"
     t.string "role", default: "resident"
+    t.string "document"
+    t.bigint "townhouse_area_id"
+    t.boolean "active", default: false
+    t.index ["document"], name: "index_users_on_document", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+    t.index ["townhouse_area_id"], name: "index_users_on_townhouse_area_id"
   end
 
   add_foreign_key "bookings", "townhouse_areas"
   add_foreign_key "bookings", "users"
   add_foreign_key "residents", "townhouse_areas"
+  add_foreign_key "users", "townhouse_areas"
 end

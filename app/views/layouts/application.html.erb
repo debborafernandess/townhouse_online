@@ -1,16 +1,21 @@
 <!DOCTYPE html>
 
-<html class="ls-theme-gold">
+<html class="ls-theme-green  ls-browser-chrome ls-window-lg ls-screen-lg">
   <head>
     <title><%= ENV['TOWNHOUSE_NAME'] || 'Meu condomínio' %></title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <meta charset="utf-8">
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Gerenciamento do condominio">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
 
-    <%= stylesheet_link_tag 'https://assets.locaweb.com.br/locastyle/3.10.1/stylesheets/locastyle.css', 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'https://opensource.locaweb.com.br/locawebstyle/assets/javascripts/locastyle.js', 'application', 'data-turbolinks-track': 'reload' %>
+    <link rel="apple-touch-icon" href="/locawebstyle/assets/images/ico-boilerplate.png">
+    <link rel="icon" sizes="192x192" href="/locawebstyle/assets/images/ico-boilerplate.png">
+    <%= stylesheet_link_tag :application, '//assets.locaweb.com.br/locastyle/3.10.1/stylesheets/locastyle.css', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag :application, 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag '//opensource.locaweb.com.br/locawebstyle/assets/javascripts/locastyle.js', 'data-turbolinks-track': 'reload' %>
     <script>
       window.fbAsyncInit = function() {
         FB.init({
@@ -21,8 +26,7 @@
         });
 
         FB.AppEvents.logPageView();
-
-      };
+        };
 
       (function(d, s, id){
         var js, fjs = d.getElementsByTagName(s)[0];
@@ -36,7 +40,7 @@
 
   <body>
     <%= render 'layouts/header' %>
-    <%= render 'layouts/sidebar' if current_user && current_user.admin? %>
+    <%= render 'layouts/sidebar' if current_user %>
 
     <main class="ls-main">
       <div class="container-fluid">

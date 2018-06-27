@@ -53,7 +53,7 @@
         <li class="ls-active"><%= link_to 'Agenda', bookings_path, class: 'ls-ico-calendar' %></li>
         <% if current_user.admin? %>
           <li><%= link_to 'Condominio', townhouse_areas_path, class: 'ls-ico-home' %></li>
-          <li><%= link_to 'Moradores', residents_path, class: 'ls-ico-users' %></li>
+          <li><%= link_to 'Moradores', users_path, class: 'ls-ico-users' %></li>
         <% end %>
         <li><%= link_to 'Histórico', expired_bookings_path, class: 'ls-ico-history' %></li>
       </ul>

@@ -2,25 +2,25 @@
   <%= t(controller.action_name).capitalize %>
 </h1>
 
-<%= form_for @resident do |f| %>
+<%= form_for @user do |f| %>
   <div class="form-group">
     <%= f.label :name %>
     <%= f.text_field :name, class: 'form-control' %>
-    <%= @resident.errors.messages.fetch(:name, nil) * ', ' %>
+    <%= @user.errors.messages.fetch(:name, nil) * ', ' %>
   </div>
   <div class="form-group">
     <%= f.label :document %>
     <%= f.text_field :document, class: 'form-control' %>
-    <%= @resident.errors.messages.fetch(:document, nil) * ', ' %>
+    <%= @user.errors.messages.fetch(:document, nil) * ', ' %>
   </div>
    <div class="form-group">
     <%= f.label :email %>
     <%= f.text_field :email, class: 'form-control' %>
-    <%= @resident.errors.messages.fetch(:email, nil) * ', ' %>
+    <%= @user.errors.messages.fetch(:email, nil) * ', ' %>
   </div>
 
   <div class="form-group">
-    <%= link_to t('cancel'), :back, class: 'btn btn-default' %>
+    <%= link_to t('cancel'), users_path, class: 'btn btn-default' %>
     <%= f.submit t('submit'), class: 'btn btn-primary' %>
   </div>
 <% end %>

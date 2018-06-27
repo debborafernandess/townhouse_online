@@ -7,9 +7,10 @@
   <td><%= booking.reserved_to.strftime('%d/%m/%Y') %></td>
   <td><%= booking.user.name %></td>
   <td><%= booking.townhouse_area.name %></td>
+    <td class="ls-ico-book"></td>
   <% if current_user.admin? && booking.active? %>
     <td>
-      <%= link_to 'remover',
+      <%= link_to '',
         booking_path(booking),
         class: 'ls-ico-cancel-circle',
         method: :delete,

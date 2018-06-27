@@ -1,5 +1,6 @@
 class BookingsController < ApplicationController
   before_action :set_booking, only: %i(edit update destroy)
+  before_action :set_collections, only: %i(new edit create update)
 
   def index
     @bookings = Booking.not_expired.order(reserved_to: :asc).page(params[:page])
@@ -46,5 +47,10 @@ class BookingsController < ApplicationController
 
   def set_booking
     @booking = Booking.find(params[:id])
+  end
+
+  def set_collections
+    @users = User.active.order(:name)
+    @areas = TownhouseArea.shared.order(:name)
   end
 end

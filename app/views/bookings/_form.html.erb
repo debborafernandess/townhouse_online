@@ -2,25 +2,42 @@
   <%= t(controller.action_name).capitalize %>
 </h1>
 
-<%= form_for @booking do |f| %>
-  <div class="form-group">
-    <%= f.label :reserved_to %>
-    <%= f.text_field :reserved_to, class: 'form-control' %>
-    <%= @booking.errors.messages.fetch(:reserved_to, nil) * ', ' %>
-  </div>
-  <div class="form-group">
-    <%= f.label :user %>
-    <%= f.collection_select(:user_id, User.all, :id, :name, { include_blank: true }, class: 'form-control') %>
-    <%= @booking.errors.messages.fetch(:user, nil) * ', ' %>
-  </div>
-  <div class="form-group">
-    <%= f.label :townhouse_area %>
-    <%= f.collection_select(:townhouse_area_id, TownhouseArea.shared, :id, :name, { include_blank: true }, class: 'form-control') %>
-    <%= @booking.errors.messages.fetch(:townhouse_area, nil) * ', ' %>
-  </div>
+<%= form_for @booking, html: { class: 'ls-form ls-form-inline row' } do |f| %>
+    <label class="ls-label col-md-4">
+      <div class="ls-prefix-group">
+        <span class="ls-label-text-prefix">Data: </span>
+        <%= f.text_field :reserved_to, id: "bookingTo", placeholder: "dd/mm/aaaa", class: 'datepicker' %>
+        <%= link_to '', '#', class: "ls-label-text-prefix ls-ico-calendar", :'data-trigger-calendar' => "#bookingTo"%>
+      </div>
+      <p class="ls-label-info"><%= @booking.errors.messages.fetch(:reserved_to, nil) * ', ' %></p>
+    </label>
+    <label class="ls-label col-md-4">
+      <div class="ls-prefix-group">
+        <span class="ls-label-text-prefix">Morador: </span>
+        <% if current_user.admin? %>
+          <%= f.collection_select(:user_id, User.active, :id, :name, { include_blank: true }, class: 'form-control') %>
+        <% else %>
+          <%= f.hidden_field :user_id, value: current_user.id %>
+          <%= text_field_tag :user, current_user.name %>
+        <% end %>
+      </div>
+      <p class="ls-label-info"><%= @booking.errors.messages.fetch(:user, nil).first %></p>
+    </label>
+    <label class="ls-label col-md-4">
+      <div class="ls-prefix-group">
+        <span class="ls-label-text-prefix">Local: </span>
+        <% if @areas.one? %>
+          <%= f.hidden_field :user_id, value: current_user.id %>
+          <%= text_field_tag :townhouse_area, @areas.first.name %>
+        <% else %>
+          <%= f.collection_select(:townhouse_area_id, @areas, :id, :name, { include_blank: true }, class: 'form-control') %>
+        <% end %>
+      </div>
+      <p class="ls-label-info"><%= @booking.errors.messages.fetch(:townhouse_area, nil).first %></p>
+    </label>
 
-  <div class="form-group">
-    <%= link_to t('cancel'), :back, class: 'btn btn-default' %>
+  <div class='ls-actions-btn'>
+    <%= link_to t('cancel'), bookings_path, class: 'btn btn-default' %>
     <%= f.submit t('submit'), class: 'btn btn-primary' %>
   </div>
 <% end %>

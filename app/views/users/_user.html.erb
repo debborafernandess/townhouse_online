@@ -1,0 +1,14 @@
+<tr>
+  <td><%= link_to '', edit_user_path(user), class: 'ls-ico-pencil' %></td>
+  <td><%= link_to user.name, edit_user_path(user) %></td>
+  <td><%= user.email %></td>
+  <td><%= user.active %></td>
+  <td>
+    <%= link_to 'remover',
+      user_path(user),
+      class: 'ls-ico-cancel-circle',
+      method: :delete,
+      data: { confirm: 'Are you sure?' }
+    %>
+  </td>
+</tr>
